@@ -1,13 +1,20 @@
-namespace Aoc2021.Puzzle2;
+namespace Aoc2021.Inputs;
 
-public class AnswerCalculator
+public sealed class Day02 : BaseDay
 {
-    public long Calculate1(IEnumerable<string> instructions)
+    private readonly string[] _instructions;
+
+    public Day02()
+    {
+        _instructions = Utils.GetLines(InputFilePath);
+    }
+
+    public override ValueTask<string> Solve_1()
     {
         var horizontal = 0;
         var vertical = 0;
 
-        foreach (var instruction in instructions)
+        foreach (var instruction in _instructions)
         {
             var direction = GetDirection(instruction.Split(" ")[0]);
             var step = int.Parse(instruction.Split(" ")[1]);
@@ -26,16 +33,16 @@ public class AnswerCalculator
             }
         }
 
-        return horizontal * vertical;
+        return new ValueTask<string>((horizontal * vertical).ToString());
     }
 
-    public long Calculate2(IEnumerable<string> instructions)
+    public override ValueTask<string> Solve_2()
     {
         var horizontal = 0;
         var vertical = 0;
         var aim = 0;
 
-        foreach (var instruction in instructions)
+        foreach (var instruction in _instructions)
         {
             var direction = GetDirection(instruction.Split(" ")[0]);
             var step = int.Parse(instruction.Split(" ")[1]);
@@ -55,7 +62,7 @@ public class AnswerCalculator
             }
         }
 
-        return horizontal * vertical;
+        return new ValueTask<string>((horizontal * vertical).ToString());
     }
 
     private Direction GetDirection(string directionText)
@@ -68,4 +75,11 @@ public class AnswerCalculator
             _ => throw new ArgumentException("", nameof(directionText))
         };
     }
+}
+
+public enum Direction
+{
+    Forward,
+    Down,
+    Up
 }
