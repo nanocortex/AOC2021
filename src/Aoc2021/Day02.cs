@@ -1,4 +1,4 @@
-namespace Aoc2021.Inputs;
+namespace Aoc2021;
 
 public sealed class Day02 : BaseDay
 {

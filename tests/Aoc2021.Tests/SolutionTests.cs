@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using Aoc2021.Inputs;
 using AoCHelper;
 using Shouldly;
 using Xunit;
@@ -8,7 +7,7 @@ using Xunit.Sdk;
 
 namespace Aoc2021.Tests;
 
-public class ExampleTests
+public class SolutionTests
 {
     [Theory]
     [InlineData(typeof(Day01), "1342", "1378")]
