@@ -15,6 +15,7 @@ public class SolutionTests
     [InlineData(typeof(Day03), "841526", "4790390")]
     [InlineData(typeof(Day04), "60368", "17435")]
     [InlineData(typeof(Day05), "6397", "22335")]
+    [InlineData(typeof(Day06), "380243", "1708791884591")]
     public async Task Test(Type type, string solution1, string solution2)
     {
         if (Activator.CreateInstance(type) is BaseDay instance)
