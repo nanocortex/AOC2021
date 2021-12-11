@@ -2,8 +2,8 @@ namespace Aoc2021;
 
 public class Day04 : BaseDay
 {
-    private List<int> _numbers;
-    private List<Board> _boards;
+    private List<int> _numbers = new();
+    private List<Board> _boards = new();
 
     public Day04()
     {
@@ -45,18 +45,17 @@ public class Day04 : BaseDay
             foreach (var board in _boards.Where(x => !x.Winner))
             {
                 board.CheckNumber(number);
-                if (board.Bingo())
-                {
-                    winnerBoard = board;
-                    lastNumber = number;
-                }
+                if (!board.Bingo()) continue;
+                winnerBoard = board;
+                lastNumber = number;
             }
 
             if (_boards.All(x => x.Winner))
                 break;
         }
 
-        var score = winnerBoard!.CalculateScore();
+
+        var score = winnerBoard?.CalculateScore() ?? 0;
 
         return new ValueTask<string>((score * lastNumber).ToString());
     }
